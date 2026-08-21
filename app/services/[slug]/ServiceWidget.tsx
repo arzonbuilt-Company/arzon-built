@@ -853,11 +853,11 @@ export function SidingWidget() {
   const activeColor = color || mat.hex
 
   const customColors = [
-    { hex: '#4A5056', name: 'Iron Gray' },
-    { hex: '#1C2E24', name: 'Forest Green' },
-    { hex: '#D2C9B8', name: 'Cobble Greige' },
-    { hex: '#8A532B', name: 'Natural Cedar' },
-    { hex: '#1F2937', name: 'Midnight Charcoal' },
+    { hex: '#4A5056', name: 'Iron Gray', nameEs: 'Gris Hierro' },
+    { hex: '#1C2E24', name: 'Forest Green', nameEs: 'Verde Bosque' },
+    { hex: '#D2C9B8', name: 'Cobble Greige', nameEs: 'Greige Adoquín' },
+    { hex: '#8A532B', name: 'Natural Cedar', nameEs: 'Cedro Natural' },
+    { hex: '#1F2937', name: 'Midnight Charcoal', nameEs: 'Carbón Medianoche' },
   ]
 
   return (
@@ -928,7 +928,7 @@ export function SidingWidget() {
               activeColor === c.hex ? 'border-lime-DEFAULT scale-110' : 'border-white/10'
             }`}
             style={{ backgroundColor: c.hex }}
-            title={c.name}
+            title={lang === 'en' ? c.name : c.nameEs}
           />
         ))}
       </div>
@@ -1005,17 +1005,17 @@ export function WindowsWidget() {
         <div className="flex gap-4 relative">
           {/* Glass Pane 1 */}
           <div className="w-4 h-32 rounded-md bg-gradient-to-r from-blue-300/20 to-blue-300/40 border border-blue-300/40 relative">
-            <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] text-white/30 whitespace-nowrap">Glass</span>
+            <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] text-white/30 whitespace-nowrap">{lang === 'en' ? 'Glass' : 'Vidrio'}</span>
           </div>
 
           {/* Argon Gas Chamber (center gap) */}
           <div className="w-10 h-32 flex flex-col justify-around items-center border border-dashed border-white/10 rounded-md bg-white/[0.01]">
-            <span className="text-[8px] text-lime-DEFAULT font-bold uppercase tracking-widest font-mono rotate-90">ARGON</span>
+            <span className="text-[8px] text-lime-DEFAULT font-bold uppercase tracking-widest font-mono rotate-90">{lang === 'en' ? 'ARGON' : 'ARGÓN'}</span>
           </div>
 
           {/* Glass Pane 2 */}
           <div className="w-4 h-32 rounded-md bg-gradient-to-r from-blue-300/20 to-blue-300/40 border border-blue-300/40 relative">
-            <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] text-white/30 whitespace-nowrap">Glass</span>
+            <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] text-white/30 whitespace-nowrap">{lang === 'en' ? 'Glass' : 'Vidrio'}</span>
           </div>
         </div>
 
@@ -1047,10 +1047,10 @@ export function KitchenWidget() {
   const [counter, setCounter] = useState<string>('marble')
 
   const cabinetColors = [
-    { hex: '#1C2E24', name: 'Forest Green' },
-    { hex: '#0B2545', name: 'Navy Blue' },
-    { hex: '#1E1E1E', name: 'Matte Black' },
-    { hex: '#EAE6DF', name: 'Warm Cream' },
+    { hex: '#1C2E24', name: 'Forest Green', nameEs: 'Verde Bosque' },
+    { hex: '#0B2545', name: 'Navy Blue', nameEs: 'Azul Marino' },
+    { hex: '#1E1E1E', name: 'Matte Black', nameEs: 'Negro Mate' },
+    { hex: '#EAE6DF', name: 'Warm Cream', nameEs: 'Crema Cálida' },
   ]
 
   const counters = [
@@ -1100,7 +1100,7 @@ export function KitchenWidget() {
 
       {/* Select Cabinet color */}
       <div className="space-y-2">
-        <label className="text-[10px] tracking-wider font-sans text-white/40 uppercase block text-center">Cabinet Color</label>
+        <label className="text-[10px] tracking-wider font-sans text-white/40 uppercase block text-center">{lang === 'en' ? 'Cabinet Color' : 'Color de Gabinete'}</label>
         <div className="flex gap-2.5 justify-center">
           {cabinetColors.map(c => (
             <button
@@ -1110,7 +1110,7 @@ export function KitchenWidget() {
                 cabinet === c.hex ? 'border-lime-DEFAULT scale-110 shadow-lime-glow' : 'border-white/10'
               }`}
               style={{ backgroundColor: c.hex }}
-              title={c.name}
+              title={lang === 'en' ? c.name : c.nameEs}
             />
           ))}
         </div>
@@ -1118,7 +1118,7 @@ export function KitchenWidget() {
 
       {/* Select Countertop material */}
       <div className="space-y-2">
-        <label className="text-[10px] tracking-wider font-sans text-white/40 uppercase block text-center">Countertop Material</label>
+        <label className="text-[10px] tracking-wider font-sans text-white/40 uppercase block text-center">{lang === 'en' ? 'Countertop Material' : 'Material del Mesón'}</label>
         <div className="flex gap-2 justify-center">
           {counters.map(c => (
             <button
@@ -1145,10 +1145,10 @@ export function DeckWidget() {
   const [deckColor, setDeckColor] = useState<string>('#A0522D') // sienna
 
   const deckStains = [
-    { hex: '#A0522D', name: 'Sienna Red' },
-    { hex: '#CD853F', name: 'Golden Oak' },
-    { hex: '#8B4513', name: 'Dark Walnut' },
-    { hex: '#5C5C5C', name: 'Composite Slate' },
+    { hex: '#A0522D', name: 'Sienna Red', nameEs: 'Siena Rojizo' },
+    { hex: '#CD853F', name: 'Golden Oak', nameEs: 'Roble Dorado' },
+    { hex: '#8B4513', name: 'Dark Walnut', nameEs: 'Nogal Oscuro' },
+    { hex: '#5C5C5C', name: 'Composite Slate', nameEs: 'Pizarra Compuesta' },
   ]
 
   return (
@@ -1182,7 +1182,7 @@ export function DeckWidget() {
       </div>
 
       <div className="space-y-2">
-        <label className="text-[10px] tracking-wider font-sans text-white/40 uppercase block text-center">Wood Stain Style</label>
+        <label className="text-[10px] tracking-wider font-sans text-white/40 uppercase block text-center">{lang === 'en' ? 'Wood Stain Style' : 'Estilo de Tinte de Madera'}</label>
         <div className="flex gap-2.5 justify-center">
           {deckStains.map(s => (
             <button
@@ -1192,7 +1192,7 @@ export function DeckWidget() {
                 deckColor === s.hex ? 'border-lime-DEFAULT scale-110 shadow-lime-glow' : 'border-white/10'
               }`}
               style={{ backgroundColor: s.hex }}
-              title={s.name}
+              title={lang === 'en' ? s.name : s.nameEs}
             />
           ))}
         </div>
@@ -1219,7 +1219,7 @@ export function FullWidget() {
 
   return (
     <div className="space-y-5 glass border border-white/5 p-6 rounded-2xl shadow-xl max-w-sm mx-auto">
-      <span className="text-[9px] font-sans text-white/30 tracking-[.3em] uppercase block mb-2">Project Execution Map</span>
+      <span className="text-[9px] font-sans text-white/30 tracking-[.3em] uppercase block mb-2">{lang === 'en' ? 'Project Execution Map' : 'Mapa de Ejecución del Proyecto'}</span>
       {phases.map((ph, idx) => (
         <div key={ph.label} className="space-y-1.5">
           <div className="flex justify-between items-baseline">

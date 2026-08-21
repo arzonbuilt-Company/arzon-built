@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react'
+import { createContext, useContext, useEffect, useLayoutEffect, useState, ReactNode } from 'react'
 
 export type Lang = 'en' | 'es'
 
@@ -296,7 +296,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [mounted, setMounted] = useState(false)
   const [lang, setLangState] = useState<Lang>('en')
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setMounted(true)
     const next = detectInitialLang()
     if (next !== lang) setLangState(next)
