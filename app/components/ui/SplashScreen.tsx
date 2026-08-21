@@ -9,33 +9,23 @@ export function SplashScreen() {
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
-    document.body.style.overflow = 'hidden'
+    // Intentionally does NOT set body{overflow:hidden}: on a congested main
+    // thread even a "safety" JS timer can be starved for a long time, and a
+    // scroll block that depends on JS to lift it can then get stuck for
+    // real. The splash is a fixed full-screen overlay regardless, so it
+    // still covers everything the same way without needing to touch scroll.
     const iv = setInterval(() => {
       setProgress(p => {
         if (p >= 100) { clearInterval(iv); return 100 }
         return Math.min(p + (p < 70 ? 2 : p < 90 ? 3 : 1), 100)
       })
     }, 25)
-    // Hard safety net: never keep scrolling blocked for more than a few
-    // seconds, even if the tick above gets delayed by a busy main thread
-    // on a slow device — a stuck intro screen must never outlast this.
-    const safety = setTimeout(() => {
-      clearInterval(iv)
-      setProgress(100)
-    }, 3000)
-    return () => {
-      clearInterval(iv)
-      clearTimeout(safety)
-      document.body.style.overflow = ''
-    }
+    return () => clearInterval(iv)
   }, [])
 
   useEffect(() => {
     if (progress >= 100) {
-      const t = setTimeout(() => {
-        setVisible(false)
-        document.body.style.overflow = ''
-      }, 500)
+      const t = setTimeout(() => setVisible(false), 500)
       return () => clearTimeout(t)
     }
   }, [progress])
