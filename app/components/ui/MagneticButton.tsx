@@ -34,6 +34,9 @@ export function MagneticButton({
     const inner = innerRef.current
     if (!el || !inner) return
 
+    const isTouch = window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window
+    if (isTouch) return
+
     const onMove = (e: MouseEvent) => {
       const rect = el.getBoundingClientRect()
       const dx = e.clientX - (rect.left + rect.width / 2)

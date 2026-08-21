@@ -182,6 +182,20 @@ body.cursor-hover-text #cursor-ring {
     border: 1px solid rgba(214,255,56,0.15);
   }
   .glow-lime   { box-shadow: 0 0 30px rgba(214,255,56,0.15), 0 0 60px rgba(214,255,56,0.05); }
+
+  /* Backdrop-filter blur is one of the most expensive effects for mobile GPUs,
+     especially stacked across many panels while scrolling. Cut it down sharply
+     on touch/coarse-pointer devices instead of removing the glass look entirely. */
+  @media (pointer: coarse) {
+    .glass {
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .glass-lime {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+  }
   .animate-float        { animation: float 6s ease-in-out infinite; }
   .animate-pulse-glow   { animation: pulse-glow 3s ease-in-out infinite; }
   .animate-marquee      { animation: marquee 28s linear infinite; }

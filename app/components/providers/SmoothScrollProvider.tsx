@@ -11,7 +11,15 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
+    const isTouch = window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window
     gsap.registerPlugin(ScrollTrigger)
+
+    if (isTouch) {
+      // Native scroll performs better than Lenis on touch devices, especially
+      // combined with the backdrop-blur "glass" panels used across sections.
+      ScrollTrigger.refresh()
+      return
+    }
 
     const lenis = new Lenis({
       duration: 1.1,
