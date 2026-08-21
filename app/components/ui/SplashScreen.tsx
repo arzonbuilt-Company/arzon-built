@@ -16,8 +16,16 @@ export function SplashScreen() {
         return Math.min(p + (p < 70 ? 2 : p < 90 ? 3 : 1), 100)
       })
     }, 25)
+    // Hard safety net: never keep scrolling blocked for more than a few
+    // seconds, even if the tick above gets delayed by a busy main thread
+    // on a slow device — a stuck intro screen must never outlast this.
+    const safety = setTimeout(() => {
+      clearInterval(iv)
+      setProgress(100)
+    }, 3000)
     return () => {
       clearInterval(iv)
+      clearTimeout(safety)
       document.body.style.overflow = ''
     }
   }, [])
