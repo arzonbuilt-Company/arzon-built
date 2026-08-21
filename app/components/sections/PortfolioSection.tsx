@@ -1,28 +1,35 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useT } from '../../lib/i18n'
 
 export function PortfolioSection() {
   const { t, lang } = useT()
-  const [perRow, setPerRow] = useState(24)
+  const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    const isTouch = window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window
-    const isSmallScreen = window.innerWidth < 768
-    // Mobile GPUs pay a continuous compositing cost for every marquee card
-    // (rounded corners + shadow, animating forever) — keep the loop cheap there.
-    if (isTouch || isSmallScreen) setPerRow(8)
+    const section = sectionRef.current
+    if (!section) return
+    // Same look and same photo count everywhere — just stop paying the
+    // animation's GPU cost while the carousel has scrolled off screen.
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        section.classList.toggle('marquee-paused', !entry.isIntersecting)
+      },
+      { threshold: 0 }
+    )
+    observer.observe(section)
+    return () => observer.disconnect()
   }, [])
 
-  // Generamos los proyectos reales convertidos
-  const row1Photos = Array.from({ length: perRow }, (_, i) => ({
+  // Generamos los 48 proyectos reales convertidos
+  const row1Photos = Array.from({ length: 24 }, (_, i) => ({
     src: `/assets/project_photo_${i + 1}.jpg`,
     tag: lang === 'en' ? 'Completed Work' : 'Proyecto Realizado',
   }))
 
-  const row2Photos = Array.from({ length: perRow }, (_, i) => ({
+  const row2Photos = Array.from({ length: 24 }, (_, i) => ({
     src: `/assets/project_photo_${i + 25}.jpg`,
     tag: lang === 'en' ? 'Completed Work' : 'Proyecto Realizado',
   }))
@@ -32,7 +39,7 @@ export function PortfolioSection() {
   const doubledRow2 = [...row2Photos, ...row2Photos]
 
   return (
-    <section id="portfolio" className="relative py-20 sm:py-32 px-4 sm:px-6 overflow-hidden bg-transparent"
+    <section id="portfolio" ref={sectionRef} className="relative py-20 sm:py-32 px-4 sm:px-6 overflow-hidden bg-transparent"
     >
       {/* Estilos locales para las dos direcciones del marquee a velocidad óptima */}
       <style>{`
@@ -92,7 +99,7 @@ export function PortfolioSection() {
             {doubledRow1.map((p, i) => (
               <div
                 key={`row1-${i}`}
-                className="portfolio-card relative w-[240px] sm:w-[380px] aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 shadow-2xl group shrink-0 cursor-none"
+                className="relative w-[240px] sm:w-[380px] aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 shadow-2xl group shrink-0 cursor-none"
                 data-cursor-text={lang === 'es' ? 'ARZON' : 'BUILT'}
               >
                 {/* Borde de realce con brillo en hover */}
@@ -123,7 +130,7 @@ export function PortfolioSection() {
             {doubledRow2.map((p, i) => (
               <div
                 key={`row2-${i}`}
-                className="portfolio-card relative w-[240px] sm:w-[380px] aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 shadow-2xl group shrink-0 cursor-none"
+                className="relative w-[240px] sm:w-[380px] aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 shadow-2xl group shrink-0 cursor-none"
                 data-cursor-text={lang === 'es' ? 'ARZON' : 'BUILT'}
               >
                 {/* Borde de realce con brillo en hover */}
