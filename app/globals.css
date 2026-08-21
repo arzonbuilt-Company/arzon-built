@@ -183,17 +183,19 @@ body.cursor-hover-text #cursor-ring {
   }
   .glow-lime   { box-shadow: 0 0 30px rgba(214,255,56,0.15), 0 0 60px rgba(214,255,56,0.05); }
 
-  /* Backdrop-filter blur is one of the most expensive effects for mobile GPUs,
-     especially stacked across many panels while scrolling. Cut it down sharply
-     on touch/coarse-pointer devices instead of removing the glass look entirely. */
+  /* backdrop-filter over a playing <video> is a known severe perf pitfall in
+     Safari/WebKit — it forces the video off its hardware fast-path so every
+     frame gets re-sampled through the blur, which can stall the page for a
+     long time regardless of how powerful the phone is. The background video
+     covers virtually the whole viewport, so any glass panel sits above it.
+     Drop the blur (keep the translucent background/border) on touch devices. */
   @media (pointer: coarse) {
-    .glass {
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-    }
-    .glass-lime {
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+    .glass,
+    .glass-lime,
+    .backdrop-blur-md,
+    .backdrop-blur-sm {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
     }
   }
 
