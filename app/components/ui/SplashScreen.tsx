@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useT } from '../../lib/i18n'
 
@@ -70,8 +71,8 @@ export function SplashScreen() {
             transition={{ delay: 0.15, duration: 0.6 }}
             className="text-center"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/Logo.png" alt="Arzon Built" className="h-14 w-auto mx-auto mb-3" style={{ filter: 'brightness(1.1)' }} />
+            <Image src="/Logo.png" alt="Arzon Built" width={130} height={40} priority
+              className="h-14 w-auto mx-auto mb-3" style={{ filter: 'brightness(1.1)' }} />
             <p className="font-sans text-xs tracking-[.4em] uppercase text-lime-DEFAULT/50 mt-1">
               Lawrenceville, GA
             </p>
