@@ -1,5 +1,5 @@
 'use client'
-import { Suspense } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Canvas } from '@react-three/fiber'
 import { ParticleField } from '../three/ParticleField'
@@ -28,6 +28,13 @@ function StatCard({ value, suffix, label }: { value: number; suffix: string; lab
 
 export function HeroSection() {
   const { t, lang } = useT()
+  const [showParticles, setShowParticles] = useState(false)
+
+  useEffect(() => {
+    const isTouch = window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window
+    const isSmallScreen = window.innerWidth < 768
+    if (!isTouch && !isSmallScreen) setShowParticles(true)
+  }, [])
 
   const stats = [
     { value: 5,    suffix: '+', label: t('hero.stat1') },
@@ -39,16 +46,18 @@ export function HeroSection() {
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16 bg-transparent"
     >
 
-      {/* Three.js particles bg */}
-      <div className="absolute inset-0 z-0 opacity-40">
-        <Canvas camera={{ position: [0, 0, 7], fov: 55 }} gl={{ alpha: true }} style={{ background: 'transparent' }}>
-          <ambientLight intensity={0.5} />
-          <pointLight position={[4, 4, 4]} intensity={2} color="#D6FF38" />
-          <Suspense fallback={null}>
-            <ParticleField />
-          </Suspense>
-        </Canvas>
-      </div>
+      {/* Three.js particles bg — desktop only, skipped on mobile/touch for performance */}
+      {showParticles && (
+        <div className="absolute inset-0 z-0 opacity-40">
+          <Canvas camera={{ position: [0, 0, 7], fov: 55 }} gl={{ alpha: true }} dpr={[1, 1.5]} style={{ background: 'transparent' }}>
+            <ambientLight intensity={0.5} />
+            <pointLight position={[4, 4, 4]} intensity={2} color="#D6FF38" />
+            <Suspense fallback={null}>
+              <ParticleField />
+            </Suspense>
+          </Canvas>
+        </div>
+      )}
 
       {/* Radial Gold Flare Overlay */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-lime-DEFAULT/5 blur-[120px] pointer-events-none" />
