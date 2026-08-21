@@ -9,23 +9,22 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Tonal scale — same dark family, different luminance & hue.
-        // Nested object so Tailwind generates bg-surface, bg-surface-warm, etc.
-        bg: "#030c08",       // ultra-dark forest green (near-black)
+        // Tonal scale — official Arzon Built Branding (Deep Forest & Electric Lime)
+        bg: "#060B08",       // deep forest green-black base
         surface: {
-          DEFAULT: "#071510", // very dark pine green
-          warm:    "#0c221a", // dark pine green
-          cool:    "#071510", // very dark pine green
-          plum:    "#0c221a", // dark pine green
+          DEFAULT: "#0C120F", // dark forest surface
+          warm:    "#121B16", // mid forest slate
+          cool:    "#0E1612", // dark slate
+          plum:    "#15221B", // forest about background
         },
-        card:    "#071510",  // elevated card background
-        lime:    { DEFAULT: "#E3EF26", dark: "#0a3325", light: "#E2FBCE" }, // brand vibrant accent
-        amber:   "#f59e0b",
-        muted:   "#687d74",  // muted slate green
-        subtle:  "#a6bdb2",  // soft cream-green labels
+        card:    "#0E1612",  // elevated glass card
+        lime:    { DEFAULT: "#D6FF38", dark: "#B2E01D", light: "#E2FF66" }, // mapped lime to official electric branding lime
+        amber:   "#CFFF24",
+        muted:   "#6b7280",
+        subtle:  "#9ca3af",
       },
       fontFamily: {
-        display: ["Playfair Display", "Georgia", "serif"],
+        display: ["Outfit", "system-ui", "sans-serif"],
         sans:    ["Inter", "system-ui", "sans-serif"],
       },
       animation: {
@@ -39,10 +38,10 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
       },
       boxShadow: {
-        "lime-glow":   "0 0 30px rgba(227,239,38,0.20), 0 0 60px rgba(227,239,38,0.08)",
-        "lime-strong": "0 0 50px rgba(227,239,38,0.30), 0 0 100px rgba(227,239,38,0.12)",
-        "card":        "0 4px 24px rgba(0,0,0,0.4)",
-        "card-hover":  "0 8px 40px rgba(227,239,38,0.08), 0 4px 20px rgba(0,0,0,0.5)",
+        "lime-glow":   "0 0 30px rgba(214,255,56,0.18), 0 0 60px rgba(214,255,56,0.06)",
+        "lime-strong": "0 0 50px rgba(214,255,56,0.30), 0 0 100px rgba(214,255,56,0.12)",
+        "card":        "0 4px 24px rgba(0,0,0,0.6)",
+        "card-hover":  "0 8px 40px rgba(214,255,56,0.08), 0 4px 20px rgba(0,0,0,0.7)",
       },
     },
   },

@@ -40,5 +40,3 @@ _source-video/
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-.vercel

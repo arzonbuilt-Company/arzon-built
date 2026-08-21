@@ -38,7 +38,7 @@ const dict = {
     'services.s1.title':  'Roofing',
     'services.s1.desc':   'Architectural shingles engineered for 30 years. Synthetic underlayment, sealed ridge, full warranty.',
     'services.s2.title':  'Painting',
-    'services.s2.desc':   'PCA-standard painting. Anti-spore sanitization, digital moisture testing, ASTM C920 caulk, and premium double coatings.',
+    'services.s2.desc':   'Interior and exterior. Marine-grade primer, acrylic finish — UV-stable, ten-year coating.',
     'services.s3.title':  'Siding',
     'services.s3.desc':   'Fiber cement, vinyl, and natural wood. 50-year warranty options on premium boards.',
     'services.s4.title':  'Windows & Doors',
@@ -51,35 +51,26 @@ const dict = {
     'services.full.title':   'Full Remodeling',
     'services.full.desc':    'From a single room to the entire house. Precision craft, premium materials. One team, zero subcontractors.',
     'services.full.cta':     'Get Free Estimate',
+    'services.transformation.eyebrow': '02 — Transformation',
+    'services.transformation.title': 'Witness the change.',
+    'services.transformation.desc': 'Drag the slider to see the transition from the compromised structure to our completed work.',
+    'services.gallery.eyebrow': '03 — Craftsmanship',
+    'services.gallery.title': 'The details of our work.',
+    'services.gallery.desc': 'View close-up detail photos and highlights showing the high standards we build into every single project.',
 
     // Portfolio
     'portfolio.eyebrow':  '03 — Our Work',
-    'portfolio.title1':   'Before.',
-    'portfolio.title2':   'After.',
-    'portfolio.subtitle': 'Drag the slider. See the difference.',
-    'portfolio.before':   'Before',
-    'portfolio.after':    'After',
+    'portfolio.title1':   'Our Premium',
+    'portfolio.title2':   'Renovations.',
+    'portfolio.subtitle': 'A showcase of our detailed craft and completed projects.',
     'portfolio.foot':     'New projects added monthly.',
-    'portfolio.footCta':  'Contact us by email',
-    'portfolio.tag.roofing':  'Roofing',
-    'portfolio.tag.siding':   'Siding',
-    'portfolio.tag.fullReno': 'Full Remodel',
-    'portfolio.gallery.title': 'Project Gallery',
-    'portfolio.gallery.subtitle': 'Examine detail photos of our completed work.',
-    'portfolio.gallery.all': 'All',
-    'portfolio.gallery.category.roofing': 'Roofing',
-    'portfolio.gallery.category.painting': 'Painting',
-    'portfolio.gallery.category.siding': 'Siding',
-    'portfolio.gallery.category.windows': 'Windows & Doors',
-    'portfolio.gallery.category.kitchen': 'Kitchen',
-    'portfolio.gallery.category.deck': 'Deck',
-    'portfolio.gallery.category.full': 'Full Remodel',
+    'portfolio.footCta':  'See more on WhatsApp',
 
     // About
     'about.eyebrow':       '04 — Who We Are',
     'about.title1':        'Built on trust.',
     'about.title2':        'Finished to last.',
-    'about.body':          'A family-owned business in Lawrenceville, GA. We manage every project personally — hand-picking the right specialists for each job, showing up on site, and standing behind the result. One contact. One standard.',
+    'about.body':          'A family-owned studio in Lawrenceville, GA. We work with our own crew — no subcontractor chain, no surprise hand-offs — committed to clean work and honest timelines on every job.',
     'about.stat.years':    'Years',
     'about.stat.projects': 'Projects',
     'about.stat.est':      'Est.',
@@ -89,7 +80,7 @@ const dict = {
     'about.trust3':        'Quality guaranteed in writing',
     'about.trust4':        'English & Spanish speaking',
     'about.trust5':        'Family-owned business',
-    'about.trust6':        'Vetted specialist network',
+    'about.trust6':        'No subcontractors — ever',
     'about.cta':           'Get Your Free Estimate',
 
     // Contact
@@ -100,16 +91,21 @@ const dict = {
     'contact.info.location':     'Location',
     'contact.info.locationVal':  'Lawrenceville, GA',
     'contact.info.call':         'Call / Text',
-    'contact.info.email':        'Email',
-    'contact.info.emailVal':     'arzonbuilt@gmail.com',
+    'contact.info.whatsapp':     'Email Us',
+    'contact.info.whatsappVal':  'arzonbuilt@gmail.com',
     'contact.form.name':         'Your Name',
     'contact.form.namePh':       'John Smith',
-    'contact.form.phone':        'Phone / WhatsApp',
-    'contact.form.phonePh':      '(678) 000-0000',
+    'contact.form.phone':        'Phone Number',
+    'contact.form.phonePh':      '(678) 346-8470',
+    'contact.form.email':        'Email Address',
+    'contact.form.emailPh':      'john@example.com',
+    'contact.form.method':       'Preferred Contact Method',
+    'contact.form.method.email': 'Email',
+    'contact.form.method.sms':   'Text Message / SMS',
     'contact.form.service':      'Service Interested In',
     'contact.form.message':      'Message (optional)',
     'contact.form.messagePh':    'Describe your project briefly...',
-    'contact.form.submit':       'Send Email Request',
+    'contact.form.submit':       'Send Request',
     'contact.form.disclaimer':   'Free estimate · No commitment',
     'contact.form.opt.roofing':  'Roofing',
     'contact.form.opt.painting': 'Painting',
@@ -174,7 +170,7 @@ const dict = {
     'services.s1.title':  'Techos',
     'services.s1.desc':   'Tejas arquitectónicas con garantía de 30 años. Membrana sintética, cumbrera sellada, garantía completa.',
     'services.s2.title':  'Pintura',
-    'services.s2.desc':   'Pintura bajo estándar PCA. Lavado desinfectante anti-moho, control de humedad, sellado elastomérico y doble capa premium.',
+    'services.s2.desc':   'Interior y exterior. Imprimante grado marino, acabado acrílico — resistente UV, 10 años de duración.',
     'services.s3.title':  'Fachadas',
     'services.s3.desc':   'Fibrocemento, vinilo y madera natural. Opciones con garantía de 50 años en tableros premium.',
     'services.s4.title':  'Ventanas y Puertas',
@@ -187,35 +183,26 @@ const dict = {
     'services.full.title':   'Remodelación Completa',
     'services.full.desc':    'Desde un cuarto hasta toda la casa. Trabajo de precisión, materiales premium. Un solo equipo, cero subcontratistas.',
     'services.full.cta':     'Cotización Gratis',
+    'services.transformation.eyebrow': '02 — Transformación',
+    'services.transformation.title': 'Presencia el cambio.',
+    'services.transformation.desc': 'Arrastra el control para ver la transición desde la estructura dañada hasta nuestro trabajo terminado.',
+    'services.gallery.eyebrow': '03 — Calidad en Detalle',
+    'services.gallery.title': 'Los detalles de nuestra obra.',
+    'services.gallery.desc': 'Mira fotos de detalle y acabados que demuestran los altos estándares que aplicamos en cada proyecto.',
 
     // Portfolio
     'portfolio.eyebrow':  '03 — Nuestro Trabajo',
-    'portfolio.title1':   'Antes.',
-    'portfolio.title2':   'Después.',
-    'portfolio.subtitle': 'Arrastra el control. Mira la diferencia.',
-    'portfolio.before':   'Antes',
-    'portfolio.after':    'Después',
+    'portfolio.title1':   'Nuestras Obras',
+    'portfolio.title2':   'Terminadas.',
+    'portfolio.subtitle': 'Una muestra de nuestro trabajo detallado y proyectos finalizados.',
     'portfolio.foot':     'Nuevos proyectos cada mes.',
-    'portfolio.footCta':  'Contáctanos por correo',
-    'portfolio.tag.roofing':  'Techos',
-    'portfolio.tag.siding':   'Fachada',
-    'portfolio.tag.fullReno': 'Remodelación',
-    'portfolio.gallery.title': 'Galería de Proyectos',
-    'portfolio.gallery.subtitle': 'Examina fotos en detalle de nuestro trabajo terminado.',
-    'portfolio.gallery.all': 'Todos',
-    'portfolio.gallery.category.roofing': 'Techos',
-    'portfolio.gallery.category.painting': 'Pintura',
-    'portfolio.gallery.category.siding': 'Fachada',
-    'portfolio.gallery.category.windows': 'Ventanas y Puertas',
-    'portfolio.gallery.category.kitchen': 'Cocina',
-    'portfolio.gallery.category.deck': 'Terraza',
-    'portfolio.gallery.category.full': 'Remodelación',
+    'portfolio.footCta':  'Ver más por WhatsApp',
 
     // About
     'about.eyebrow':       '04 — Quiénes Somos',
     'about.title1':        'Construido en confianza.',
     'about.title2':        'Terminado para durar.',
-    'about.body':          'Una empresa familiar en Lawrenceville, GA. Gestionamos cada proyecto de forma personal — seleccionando los especialistas correctos para cada trabajo, presentes en obra, y respondiendo por el resultado. Un solo contacto. Un solo estándar.',
+    'about.body':          'Un estudio familiar en Lawrenceville, GA. Trabajamos con nuestro propio equipo — sin cadena de subcontratistas, sin sorpresas — comprometidos con trabajo limpio y plazos honestos en cada obra.',
     'about.stat.years':    'Años',
     'about.stat.projects': 'Proyectos',
     'about.stat.est':      'Est.',
@@ -225,7 +212,7 @@ const dict = {
     'about.trust3':        'Calidad garantizada por escrito',
     'about.trust4':        'Hablamos inglés y español',
     'about.trust5':        'Empresa familiar',
-    'about.trust6':        'Red de especialistas verificados',
+    'about.trust6':        'Sin subcontratistas — nunca',
     'about.cta':           'Obtén tu Cotización Gratis',
 
     // Contact
@@ -236,16 +223,21 @@ const dict = {
     'contact.info.location':     'Ubicación',
     'contact.info.locationVal':  'Lawrenceville, GA',
     'contact.info.call':         'Llama / Texto',
-    'contact.info.email':        'Correo',
-    'contact.info.emailVal':     'arzonbuilt@gmail.com',
+    'contact.info.whatsapp':     'Correo Electrónico',
+    'contact.info.whatsappVal':  'arzonbuilt@gmail.com',
     'contact.form.name':         'Tu Nombre',
     'contact.form.namePh':       'Juan Pérez',
-    'contact.form.phone':        'Teléfono / WhatsApp',
-    'contact.form.phonePh':      '(678) 000-0000',
+    'contact.form.phone':        'Teléfono',
+    'contact.form.phonePh':      '(678) 346-8470',
+    'contact.form.email':        'Correo Electrónico',
+    'contact.form.emailPh':      'juan@ejemplo.com',
+    'contact.form.method':       'Método de Contacto Preferido',
+    'contact.form.method.email': 'Correo Electrónico',
+    'contact.form.method.sms':   'Mensaje de Texto / SMS',
     'contact.form.service':      'Servicio de Interés',
     'contact.form.message':      'Mensaje (opcional)',
     'contact.form.messagePh':    'Describe tu proyecto brevemente...',
-    'contact.form.submit':       'Enviar por Correo',
+    'contact.form.submit':       'Enviar Solicitud',
     'contact.form.disclaimer':   'Cotización gratis · Sin compromiso',
     'contact.form.opt.roofing':  'Techos',
     'contact.form.opt.painting': 'Pintura',
@@ -301,11 +293,11 @@ function detectInitialLang(): Lang {
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  // Always render the same lang on the server (en) to avoid hydration mismatch.
-  // Hydrate the actual choice on the client after mount.
+  const [mounted, setMounted] = useState(false)
   const [lang, setLangState] = useState<Lang>('en')
 
   useEffect(() => {
+    setMounted(true)
     const next = detectInitialLang()
     if (next !== lang) setLangState(next)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -322,7 +314,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   const toggleLang = () => setLang(lang === 'en' ? 'es' : 'en')
 
-  const t = (key: Key) => dict[lang][key] ?? dict.en[key] ?? key
+  const t = (key: Key) => {
+    const activeLang = mounted ? lang : 'en'
+    return dict[activeLang][key] ?? dict.en[key] ?? key
+  }
 
   return <Ctx.Provider value={{ lang, setLang, toggleLang, t }}>{children}</Ctx.Provider>
 }

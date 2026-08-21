@@ -73,12 +73,7 @@ export function SplashScreen() {
             className="text-center"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <div className="flex items-center justify-center gap-3 mb-3">
-              <img src="/assets/Logo.png" alt="Arzon Built" className="h-14 w-auto" style={{ filter: 'brightness(1.1)' }} />
-              <span className="font-display-serif font-black tracking-widest text-white text-2xl uppercase">
-                Arzon <span className="text-lime-DEFAULT italic font-semibold">Built</span>
-              </span>
-            </div>
+            <img src="/Logo.png" alt="Arzon Built" className="h-14 w-auto mx-auto mb-3" style={{ filter: 'brightness(1.1)' }} />
             <p className="font-sans text-xs tracking-[.4em] uppercase text-lime-DEFAULT/50 mt-1">
               Lawrenceville, GA
             </p>
