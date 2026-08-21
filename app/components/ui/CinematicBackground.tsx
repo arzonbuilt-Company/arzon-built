@@ -1,24 +1,45 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef } from 'react'
 
 export function CinematicBackground() {
-  const [isDesktop, setIsDesktop] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
-    const isTouch = window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window
-    const isSmallScreen = window.innerWidth < 768
-    if (!isTouch && !isSmallScreen) setIsDesktop(true)
+    const video = videoRef.current
+    if (!video) return
+
+    // Some mobile browsers hold autoplay until the user has interacted with
+    // the page at all — try immediately, then fall back to the first tap
+    // anywhere on screen so it always ends up playing on loop.
+    video.play().catch(() => {})
+
+    const playOnFirstTouch = () => {
+      video.play().catch(() => {})
+      window.removeEventListener('touchstart', playOnFirstTouch)
+      window.removeEventListener('click', playOnFirstTouch)
+    }
+    window.addEventListener('touchstart', playOnFirstTouch, { once: true })
+    window.addEventListener('click', playOnFirstTouch, { once: true })
+
+    return () => {
+      window.removeEventListener('touchstart', playOnFirstTouch)
+      window.removeEventListener('click', playOnFirstTouch)
+    }
   }, [])
 
   return (
     <div className="fixed inset-2 sm:inset-4 -z-50 overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 pointer-events-none shadow-2xl">
-      {isDesktop ? (
-        <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-80">
-          <source src="/assets/secuencia_1.mp4" type="video/mp4" />
-        </video>
-      ) : (
-        <img src="/assets/hero-bg-poster.jpg" alt="" className="w-full h-full object-cover opacity-80" />
-      )}
+      <video
+        ref={videoRef}
+        autoPlay
+        loop
+        muted
+        playsInline
+        poster="/assets/hero-bg-poster.jpg"
+        className="w-full h-full object-cover opacity-80"
+      >
+        <source src="/assets/secuencia_1.mp4" type="video/mp4" />
+      </video>
       {/* Dark brand overlay for high text legibility */}
       <div className="absolute inset-0 bg-gradient-to-b from-bg/65 via-bg/20 to-bg/65 pointer-events-none" />
     </div>
