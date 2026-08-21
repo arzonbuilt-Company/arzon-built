@@ -1,18 +1,28 @@
 'use client'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useT } from '../../lib/i18n'
 
 export function PortfolioSection() {
   const { t, lang } = useT()
+  const [perRow, setPerRow] = useState(24)
 
-  // Generamos los 48 proyectos reales convertidos
-  const row1Photos = Array.from({ length: 24 }, (_, i) => ({
+  useEffect(() => {
+    const isTouch = window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window
+    const isSmallScreen = window.innerWidth < 768
+    // Mobile GPUs pay a continuous compositing cost for every marquee card
+    // (rounded corners + shadow, animating forever) — keep the loop cheap there.
+    if (isTouch || isSmallScreen) setPerRow(8)
+  }, [])
+
+  // Generamos los proyectos reales convertidos
+  const row1Photos = Array.from({ length: perRow }, (_, i) => ({
     src: `/assets/project_photo_${i + 1}.jpg`,
     tag: lang === 'en' ? 'Completed Work' : 'Proyecto Realizado',
   }))
 
-  const row2Photos = Array.from({ length: 24 }, (_, i) => ({
+  const row2Photos = Array.from({ length: perRow }, (_, i) => ({
     src: `/assets/project_photo_${i + 25}.jpg`,
     tag: lang === 'en' ? 'Completed Work' : 'Proyecto Realizado',
   }))
@@ -82,7 +92,7 @@ export function PortfolioSection() {
             {doubledRow1.map((p, i) => (
               <div
                 key={`row1-${i}`}
-                className="relative w-[240px] sm:w-[380px] aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 shadow-2xl group shrink-0 cursor-none"
+                className="portfolio-card relative w-[240px] sm:w-[380px] aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 shadow-2xl group shrink-0 cursor-none"
                 data-cursor-text={lang === 'es' ? 'ARZON' : 'BUILT'}
               >
                 {/* Borde de realce con brillo en hover */}
@@ -113,7 +123,7 @@ export function PortfolioSection() {
             {doubledRow2.map((p, i) => (
               <div
                 key={`row2-${i}`}
-                className="relative w-[240px] sm:w-[380px] aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 shadow-2xl group shrink-0 cursor-none"
+                className="portfolio-card relative w-[240px] sm:w-[380px] aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 shadow-2xl group shrink-0 cursor-none"
                 data-cursor-text={lang === 'es' ? 'ARZON' : 'BUILT'}
               >
                 {/* Borde de realce con brillo en hover */}

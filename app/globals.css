@@ -195,6 +195,11 @@ body.cursor-hover-text #cursor-ring {
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
     }
+    /* The portfolio marquee animates forever — box-shadow is expensive to
+       recomposite continuously on mobile GPUs, drop it there. */
+    .portfolio-card {
+      box-shadow: none;
+    }
   }
   .animate-float        { animation: float 6s ease-in-out infinite; }
   .animate-pulse-glow   { animation: pulse-glow 3s ease-in-out infinite; }
