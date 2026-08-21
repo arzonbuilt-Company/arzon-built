@@ -1,12 +1,15 @@
 'use client'
-import { Suspense, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import dynamic from 'next/dynamic'
 import { motion } from 'framer-motion'
-import { Canvas } from '@react-three/fiber'
-import { ParticleField } from '../three/ParticleField'
 import { useCountUp } from '../../hooks/useCountUp'
 import { MagneticButton } from '../ui/MagneticButton'
 import { TextReveal } from '../ui/TextReveal'
 import { useT } from '../../lib/i18n'
+
+// Three.js/@react-three-fiber is a large dependency — load it only when it
+// will actually render (desktop), so mobile never even downloads it.
+const HeroParticles = dynamic(() => import('../three/HeroParticles'), { ssr: false })
 
 function StatCard({ value, suffix, label }: { value: number; suffix: string; label: string }) {
   const { value: current, ref } = useCountUp({ end: value, duration: 1800 })
@@ -49,13 +52,7 @@ export function HeroSection() {
       {/* Three.js particles bg — desktop only, skipped on mobile/touch for performance */}
       {showParticles && (
         <div className="absolute inset-0 z-0 opacity-40">
-          <Canvas camera={{ position: [0, 0, 7], fov: 55 }} gl={{ alpha: true }} dpr={[1, 1.5]} style={{ background: 'transparent' }}>
-            <ambientLight intensity={0.5} />
-            <pointLight position={[4, 4, 4]} intensity={2} color="#D6FF38" />
-            <Suspense fallback={null}>
-              <ParticleField />
-            </Suspense>
-          </Canvas>
+          <HeroParticles />
         </div>
       )}
 
