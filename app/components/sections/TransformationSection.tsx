@@ -4,35 +4,45 @@ import { motion } from 'framer-motion'
 import { useT } from '../../lib/i18n'
 
 type Phase = 'problem' | 'repair' | 'result'
+type Bilingual = { en: string; es: string }
 
 interface Panel {
   phase: Phase
-  eyebrow: string
-  title: string
-  sub: string
+  eyebrow: Bilingual
+  title: Bilingual
+  sub: Bilingual
   num: string
 }
 
 const PANELS: Panel[] = [
   {
     phase: 'problem',
-    eyebrow: '01 — The Problem / El Problema',
-    title: 'Years of damage,\nvisible everywhere.',
-    sub: 'Structural exposure. Active moisture. A house that needed saving — fast.',
+    eyebrow: { en: '01 — The Problem', es: '01 — El Problema' },
+    title: { en: 'Years of damage,\nvisible everywhere.', es: 'Años de daño,\nvisible en todas partes.' },
+    sub: {
+      en: 'Structural exposure. Active moisture. A house that needed saving — fast.',
+      es: 'Exposición estructural. Humedad activa. Una casa que necesitaba salvarse — rápido.',
+    },
     num: '01',
   },
   {
     phase: 'repair',
-    eyebrow: '02 — The Work / La Obra',
-    title: 'Precision demo\nand full rebuild.',
-    sub: 'Complete tear-off. Engineered decking. Industrial-grade membrane applied correctly.',
+    eyebrow: { en: '02 — The Work', es: '02 — La Obra' },
+    title: { en: 'Precision demo\nand full rebuild.', es: 'Demolición precisa\ny reconstrucción total.' },
+    sub: {
+      en: 'Complete tear-off. Engineered decking. Industrial-grade membrane applied correctly.',
+      es: 'Desmontaje completo. Base estructural certificada. Membrana industrial aplicada correctamente.',
+    },
     num: '02',
   },
   {
     phase: 'result',
-    eyebrow: '03 — The Result / El Resultado',
-    title: 'Built to last\n30 years.',
-    sub: 'Architectural shingles. Sealed ridge. Clean finish. Zero callbacks.',
+    eyebrow: { en: '03 — The Result', es: '03 — El Resultado' },
+    title: { en: 'Built to last\n30 years.', es: 'Construido para durar\n30 años.' },
+    sub: {
+      en: 'Architectural shingles. Sealed ridge. Clean finish. Zero callbacks.',
+      es: 'Tejas arquitectónicas. Cumbrera sellada. Acabado limpio. Cero reclamos.',
+    },
     num: '03',
   },
 ]
@@ -43,23 +53,23 @@ const PHASE_STYLE = {
     border: 'border-[#e27d40]/30',
     bg: 'bg-[#e27d40]/5',
     text: 'text-[#e27d40]',
-    label: 'PROBLEM / PROBLEMA',
+    label: { en: 'PROBLEM', es: 'PROBLEMA' },
   },
   repair: {
     tag: '#D6FF38', // Electric Lime
     border: 'border-lime-DEFAULT/30',
     bg: 'bg-lime-DEFAULT/5',
     text: 'text-lime-DEFAULT',
-    label: 'REPAIR / OBRA',
+    label: { en: 'REPAIR', es: 'LA OBRA' },
   },
   result: {
     tag: '#10b981', // Emerald/Lime
     border: 'border-emerald-500/30',
     bg: 'bg-emerald-500/5',
     text: 'text-emerald-500',
-    label: 'RESULT / RESULTADO',
+    label: { en: 'RESULT', es: 'RESULTADO' },
   },
-} satisfies Record<Phase, object>
+} satisfies Record<Phase, { tag: string; border: string; bg: string; text: string; label: Bilingual }>
 
 export function TransformationSection() {
   const { lang } = useT()
@@ -121,20 +131,20 @@ export function TransformationSection() {
                   <div className="space-y-4 max-w-2xl">
                     <div className="flex items-center gap-3">
                       <span className={`font-mono text-xs font-semibold tracking-widest ${style.text}`}>
-                        {style.label}
+                        {style.label[lang]}
                       </span>
                       <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
                       <span className="font-mono text-xs text-white/30 tracking-wider">
-                        {p.eyebrow}
+                        {p.eyebrow[lang]}
                       </span>
                     </div>
 
                     <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-black text-white leading-tight tracking-tight whitespace-pre-line">
-                      {p.title}
+                      {p.title[lang]}
                     </h3>
 
                     <p className="text-white/60 text-sm sm:text-base leading-relaxed font-sans">
-                      {p.sub}
+                      {p.sub[lang]}
                     </p>
                   </div>
 
