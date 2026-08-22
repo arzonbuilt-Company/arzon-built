@@ -24,42 +24,18 @@ export function SplashScreen() {
   }, [])
 
   useEffect(() => {
-    // Keep the splash up until the page is ACTUALLY ready (window 'load' —
-    // fonts, hero video, above-the-fold images) instead of a fixed timer.
-    // That way the Hero is already sitting there fully formed the moment
-    // the splash lifts, instead of finishing fast and revealing a Hero
-    // that's still visibly assembling itself.
-    let minTimeElapsed = false
-    let pageLoaded = false
-
-    const tryFinish = () => {
-      if (minTimeElapsed && pageLoaded) setReady(true)
-    }
-
-    // Small minimum so the brand mark doesn't just flash on a fast load.
-    const minTimer = setTimeout(() => { minTimeElapsed = true; tryFinish() }, 500)
-
-    const onLoad = () => { pageLoaded = true; tryFinish() }
-    if (document.readyState === 'complete') {
-      onLoad()
-    } else {
-      window.addEventListener('load', onLoad)
-    }
-
-    // Hard safety cap: never hold the splash (and hide the page) for more
-    // than this, no matter how slow the connection/device is.
-    const maxTimer = setTimeout(() => setReady(true), 4000)
-
-    return () => {
-      clearTimeout(minTimer)
-      clearTimeout(maxTimer)
-      window.removeEventListener('load', onLoad)
-    }
+    // Deliberately NOT tied to window 'load' or any real resource-loading
+    // signal: on iOS, an autoplaying <video> can have its network fetch
+    // deferred/throttled by system-level settings (cellular data, Low Power
+    // Mode, Safari's "Auto-Play Videos" setting) in ways that are invisible
+    // to desktop testing tools — waiting on 'load' there could hang for a
+    // long, unpredictable time. A short fixed duration is guaranteed to be
+    // consistent everywhere, same lesson as the earlier scroll-lock issue.
+    const t = setTimeout(() => setReady(true), 900)
+    return () => clearTimeout(t)
   }, [])
 
   useEffect(() => {
-    // Fake progress just for visual feedback — caps below 100 until the
-    // real readiness signal above says it's actually safe to finish.
     const iv = setInterval(() => {
       setProgress(p => (p >= 92 ? 92 : Math.min(p + 4, 92)))
     }, 60)
