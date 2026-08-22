@@ -10,12 +10,16 @@ export function SplashScreen() {
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
-    // Browsers try to restore the previous scroll position on refresh —
-    // force every load (including a refresh) to start at the top instead.
+    // Browsers try to restore the previous scroll position on refresh — force
+    // every load (including a refresh) to start at the top instead, UNLESS
+    // the URL points at a specific section (e.g. /#services), which should
+    // still land there like normal anchor navigation.
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual'
     }
-    window.scrollTo(0, 0)
+    if (!window.location.hash) {
+      window.scrollTo(0, 0)
+    }
   }, [])
 
   useEffect(() => {
