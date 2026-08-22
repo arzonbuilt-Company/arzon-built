@@ -28,7 +28,9 @@ export function CinematicBackground() {
   }, [])
 
   return (
-    <div className="fixed inset-2 sm:inset-4 -z-50 overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 pointer-events-none shadow-2xl">
+    <div
+      className="fixed top-2 left-2 right-2 sm:top-4 sm:left-4 sm:right-4 h-[calc(100svh-1rem)] sm:h-[calc(100svh-2rem)] -z-50 overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 pointer-events-none shadow-2xl"
+    >
       <video
         ref={videoRef}
         autoPlay
