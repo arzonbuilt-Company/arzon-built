@@ -353,21 +353,23 @@ export function ServicePageClient({ service: s }: { service: ServiceData }) {
 
         <div className="relative z-10 max-w-3xl mx-auto px-6 w-full py-16 text-center">
           {/* Back link */}
-          <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+          <div className="animate-fade-up" style={{ animationDelay: '0s' }}>
             <Link href="/#services"
               className="inline-flex items-center gap-2 text-[10px] font-sans text-white/35 tracking-[.3em] uppercase hover:text-lime-DEFAULT transition-colors mb-10"
             >
               ← All Services
             </Link>
-          </motion.div>
+          </div>
 
           {/* Eyebrow */}
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
-            className="section-eyebrow mb-6 justify-center">
+          <p
+            className="section-eyebrow mb-6 justify-center animate-fade-up"
+            style={{ animationDelay: '0.1s' }}
+          >
             <span className="section-rule" />
             {s.num} — {lang === 'es' ? 'Servicio' : 'Service'}
             <span className="section-rule" />
-          </motion.p>
+          </p>
 
           {/* Title */}
           <h1 className="font-display-serif font-black leading-[0.95] mb-6"
@@ -376,17 +378,21 @@ export function ServicePageClient({ service: s }: { service: ServiceData }) {
           </h1>
 
           {/* Subtitle */}
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.8 }}
-            className="text-white/55 text-lg md:text-xl max-w-xl mx-auto leading-relaxed mb-10">
+          <p
+            className="text-white/55 text-lg md:text-xl max-w-xl mx-auto leading-relaxed mb-10 animate-fade-up"
+            style={{ animationDelay: '0.8s' }}
+          >
             {subtitle}
-          </motion.p>
+          </p>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 1.0 }}
-            className="flex gap-4 justify-center">
+          <div
+            className="flex gap-4 justify-center animate-fade-up"
+            style={{ animationDelay: '1.0s' }}
+          >
             <a href="/#contact" className="btn-lime text-sm">
               {lang === 'es' ? 'Cotización Gratis' : 'Get Free Estimate'}
             </a>
-          </motion.div>
+          </div>
         </div>
 
         {/* Bottom fade */}
