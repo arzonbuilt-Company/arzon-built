@@ -109,7 +109,15 @@ export function ContactSection() {
         ? `Hi Arzon Built! My name is ${name}. I am interested in ${service || 'a project'}. Best contact email is ${email || 'Not provided'}. Message: ${message || 'None'}`
         : `¡Hola Arzon Built! Mi nombre es ${name}. Estoy interesado en ${service || 'un proyecto'}. Mi correo es ${email || 'No provisto'}. Mensaje: ${message || 'Ninguno'}`
       
-      window.open(`sms:+16783468470?&body=${encodeURIComponent(body)}`, '_blank')
+      const isIOS = typeof navigator !== 'undefined' && (
+        /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
+      )
+      const smsUrl = isIOS
+        ? `sms:+16783468470&body=${encodeURIComponent(body)}`
+        : `sms:+16783468470?body=${encodeURIComponent(body)}`
+      
+      window.open(smsUrl, '_blank')
     }
   }
 
@@ -129,7 +137,15 @@ export function ContactSection() {
         ? `Hi Arzon Built! I'm ${name}. I calculated a website estimate: ${servicesText} (${houseSize} sq ft, ${quality} tier). Range: $${estMin.toLocaleString()}-$${estMax.toLocaleString()}. Email: ${email || 'None'}. Notes: ${message || 'None'}`
         : `¡Hola Arzon Built! Soy ${name}. Calculé un presupuesto estimado: ${servicesText} (${houseSize} sq ft, calidad ${quality}). Rango: $${estMin.toLocaleString()}-$${estMax.toLocaleString()}. Correo: ${email || 'Ninguno'}. Notas: ${message || 'Ninguno'}`
       
-      window.open(`sms:+16783468470?&body=${encodeURIComponent(body)}`, '_blank')
+      const isIOS = typeof navigator !== 'undefined' && (
+        /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
+      )
+      const smsUrl = isIOS
+        ? `sms:+16783468470&body=${encodeURIComponent(body)}`
+        : `sms:+16783468470?body=${encodeURIComponent(body)}`
+      
+      window.open(smsUrl, '_blank')
     }
   }
 
