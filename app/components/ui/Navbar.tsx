@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { motion, useScroll } from 'framer-motion'
+import { motion, useScroll, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useT } from '../../lib/i18n'
@@ -87,13 +87,14 @@ export function Navbar() {
       </div>
 
       {/* Mobile menu container (overlay) */}
-      {menuOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          className="absolute top-full left-0 right-0 w-[95%] mx-auto mt-2 rounded-2xl glass border border-white/[0.08] shadow-2xl overflow-hidden pointer-events-auto md:hidden"
-        >
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="absolute top-full left-0 right-0 w-[95%] mx-auto mt-2 rounded-2xl glass border border-white/[0.08] shadow-2xl overflow-hidden pointer-events-auto md:hidden"
+          >
           <div className="px-6 py-6 flex flex-col gap-5">
             {links.map(l => (
               <Link key={l.href} href={l.href} onClick={() => setMenuOpen(false)}
@@ -111,6 +112,7 @@ export function Navbar() {
           </div>
         </motion.div>
       )}
+      </AnimatePresence>
 
       {/* Scroll progress line */}
       <motion.div

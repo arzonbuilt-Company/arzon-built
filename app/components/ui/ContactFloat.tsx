@@ -7,6 +7,11 @@ export function ContactFloat() {
   const { lang } = useT()
   const [hoveredBtn, setHoveredBtn] = useState<'call' | 'msg' | null>(null)
 
+  const handleMouseEnter = (btn: 'call' | 'msg') => {
+    const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0)
+    if (!isTouch) setHoveredBtn(btn)
+  }
+
   return (
     <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col gap-3.5 items-end">
       
@@ -36,7 +41,7 @@ export function ContactFloat() {
         <motion.a
           href="tel:+16784399829"
           aria-label="Call Alex"
-          onMouseEnter={() => setHoveredBtn('call')}
+          onMouseEnter={() => handleMouseEnter('call')}
           onMouseLeave={() => setHoveredBtn(null)}
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -77,7 +82,7 @@ export function ContactFloat() {
         <motion.a
           href="sms:+16783468470"
           aria-label="Send us a text message"
-          onMouseEnter={() => setHoveredBtn('msg')}
+          onMouseEnter={() => handleMouseEnter('msg')}
           onMouseLeave={() => setHoveredBtn(null)}
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}

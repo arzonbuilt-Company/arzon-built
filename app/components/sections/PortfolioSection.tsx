@@ -87,7 +87,7 @@ export function PortfolioSection() {
 
         {/* Galería de Doble Carrusel en Loop Infinito */}
         <div 
-          className="relative w-screen left-1/2 right-1/2 -mx-[50vw] overflow-hidden select-none py-4 space-y-6"
+          className="relative w-full lg:w-screen lg:left-1/2 lg:right-1/2 lg:-mx-[50vw] overflow-hidden select-none py-4 space-y-6"
           style={{
             maskImage: 'linear-gradient(to right, transparent, black 12%, black 88%, transparent)',
             WebkitMaskImage: 'linear-gradient(to right, transparent, black 12%, black 88%, transparent)',
