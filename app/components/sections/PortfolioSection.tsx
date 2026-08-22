@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useT } from '../../lib/i18n'
@@ -7,29 +7,39 @@ import { useT } from '../../lib/i18n'
 export function PortfolioSection() {
   const { t, lang } = useT()
   const sectionRef = useRef<HTMLElement>(null)
+  
+  const [photoCount, setPhotoCount] = useState(24) // Default for SSR
+  const [hasIntersected, setHasIntersected] = useState(false)
 
   useEffect(() => {
+    const isMobile = window.innerWidth < 768 || window.matchMedia('(pointer: coarse)').matches
+    if (isMobile) {
+      setPhotoCount(8) // Limit to 8 photos per row on mobile to save bandwidth/CPU
+    }
+
     const section = sectionRef.current
     if (!section) return
-    // Same look and same photo count everywhere — just stop paying the
-    // animation's GPU cost while the carousel has scrolled off screen.
+
     const observer = new IntersectionObserver(
       ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasIntersected(true)
+        }
         section.classList.toggle('marquee-paused', !entry.isIntersecting)
       },
-      { threshold: 0 }
+      { threshold: 0, rootMargin: '300px' } // Preload images 300px before section scroll
     )
     observer.observe(section)
     return () => observer.disconnect()
   }, [])
 
-  // Generamos los 48 proyectos reales convertidos
-  const row1Photos = Array.from({ length: 24 }, (_, i) => ({
+  // Generamos los proyectos reales
+  const row1Photos = Array.from({ length: photoCount }, (_, i) => ({
     src: `/assets/project_photo_${i + 1}.jpg`,
     tag: lang === 'en' ? 'Completed Work' : 'Proyecto Realizado',
   }))
 
-  const row2Photos = Array.from({ length: 24 }, (_, i) => ({
+  const row2Photos = Array.from({ length: photoCount }, (_, i) => ({
     src: `/assets/project_photo_${i + 25}.jpg`,
     tag: lang === 'en' ? 'Completed Work' : 'Proyecto Realizado',
   }))
@@ -99,28 +109,32 @@ export function PortfolioSection() {
             {doubledRow1.map((p, i) => (
               <div
                 key={`row1-${i}`}
-                className="relative w-[240px] sm:w-[380px] aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 shadow-2xl group shrink-0 cursor-none"
-                data-cursor-text={lang === 'es' ? 'ARZON' : 'BUILT'}
+                className="relative w-[240px] sm:w-[380px] aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 shadow-2xl shrink-0 bg-white/[0.02] group"
               >
-                {/* Borde de realce con brillo en hover */}
-                <div className="absolute -inset-[1px] border border-lime-DEFAULT/15 rounded-2xl pointer-events-none z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
-                <Image
-                  src={p.src}
-                  alt={p.tag}
-                  fill
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  sizes="(max-width: 640px) 240px, 380px"
-                />
-                
-                {/* Degradado y etiqueta de servicio en hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-bg/95 via-bg/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6 z-10">
-                  <div className="transform translate-y-3 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                    <span className="bg-lime-DEFAULT text-bg text-[10px] font-mono font-black tracking-widest uppercase px-3 py-1.5 rounded-lg shadow-lg">
-                      {p.tag}
-                    </span>
-                  </div>
-                </div>
+                {hasIntersected && (
+                  <>
+                    {/* Borde de realce con brillo en hover */}
+                    <div className="absolute -inset-[1px] border border-lime-DEFAULT/15 rounded-2xl pointer-events-none z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    
+                    <Image
+                      src={p.src}
+                      alt={p.tag}
+                      fill
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      sizes="(max-width: 640px) 180px, 320px"
+                      quality={60}
+                    />
+                    
+                    {/* Degradado y etiqueta de servicio en hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-bg/95 via-bg/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6 z-10">
+                      <div className="transform translate-y-3 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                        <span className="bg-lime-DEFAULT text-bg text-[10px] font-mono font-black tracking-widest uppercase px-3 py-1.5 rounded-lg shadow-lg">
+                          {p.tag}
+                        </span>
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
             ))}
           </div>
@@ -130,28 +144,32 @@ export function PortfolioSection() {
             {doubledRow2.map((p, i) => (
               <div
                 key={`row2-${i}`}
-                className="relative w-[240px] sm:w-[380px] aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 shadow-2xl group shrink-0 cursor-none"
-                data-cursor-text={lang === 'es' ? 'ARZON' : 'BUILT'}
+                className="relative w-[240px] sm:w-[380px] aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 shadow-2xl shrink-0 bg-white/[0.02] group"
               >
-                {/* Borde de realce con brillo en hover */}
-                <div className="absolute -inset-[1px] border border-lime-DEFAULT/15 rounded-2xl pointer-events-none z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
-                <Image
-                  src={p.src}
-                  alt={p.tag}
-                  fill
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  sizes="(max-width: 640px) 240px, 380px"
-                />
-                
-                {/* Degradado y etiqueta de servicio en hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-bg/95 via-bg/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6 z-10">
-                  <div className="transform translate-y-3 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                    <span className="bg-lime-DEFAULT text-bg text-[10px] font-mono font-black tracking-widest uppercase px-3 py-1.5 rounded-lg shadow-lg">
-                      {p.tag}
-                    </span>
-                  </div>
-                </div>
+                {hasIntersected && (
+                  <>
+                    {/* Borde de realce con brillo en hover */}
+                    <div className="absolute -inset-[1px] border border-lime-DEFAULT/15 rounded-2xl pointer-events-none z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    
+                    <Image
+                      src={p.src}
+                      alt={p.tag}
+                      fill
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      sizes="(max-width: 640px) 180px, 320px"
+                      quality={60}
+                    />
+                    
+                    {/* Degradado y etiqueta de servicio en hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-bg/95 via-bg/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6 z-10">
+                      <div className="transform translate-y-3 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                        <span className="bg-lime-DEFAULT text-bg text-[10px] font-mono font-black tracking-widest uppercase px-3 py-1.5 rounded-lg shadow-lg">
+                          {p.tag}
+                        </span>
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
             ))}
           </div>
