@@ -27,11 +27,9 @@ export function Navbar() {
   }, [])
 
   return (
-    <motion.header
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ delay: 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none"
+    <header
+      className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none animate-slide-down"
+      style={{ animationDelay: '0.1s' }}
     >
       <div 
         className={`w-[95%] sm:w-[90%] max-w-7xl mt-4 sm:mt-6 transition-all duration-500 pointer-events-auto rounded-2xl sm:rounded-full ${
@@ -119,6 +117,6 @@ export function Navbar() {
         className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-lime-dark via-lime-DEFAULT to-lime-light origin-left pointer-events-none"
         style={{ scaleX: scrollYProgress }}
       />
-    </motion.header>
+    </header>
   )
 }

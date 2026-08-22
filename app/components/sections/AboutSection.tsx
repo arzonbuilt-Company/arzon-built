@@ -1,5 +1,4 @@
 'use client'
-import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useT } from '../../lib/i18n'
 import { useCountUp } from '../../hooks/useCountUp'
@@ -47,11 +46,6 @@ const marqueeItems = [
 export function AboutSection() {
   const { t, lang } = useT()
   const doubled = [...marqueeItems, ...marqueeItems]
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
 
   const trusts = [
     t('about.trust1'),
@@ -153,7 +147,7 @@ export function AboutSection() {
           transition={{ delay: 0.25, duration: 0.8 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 rounded-2xl overflow-hidden glass-lime mb-20 shadow-2xl"
         >
-          {mounted && stats.map(s => (
+          {stats.map(s => (
             <AboutStatCard key={s.label} {...s} />
           ))}
         </motion.div>
