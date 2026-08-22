@@ -39,7 +39,7 @@ export function PortfolioSection() {
   const doubledRow2 = [...row2Photos, ...row2Photos]
 
   return (
-    <section id="portfolio" ref={sectionRef} className="relative py-20 sm:py-32 px-4 sm:px-6 overflow-hidden bg-transparent"
+    <section id="portfolio" ref={sectionRef} className="relative scroll-mt-24 py-20 sm:py-32 px-4 sm:px-6 overflow-hidden bg-transparent"
     >
       {/* Estilos locales para las dos direcciones del marquee a velocidad óptima */}
       <style>{`

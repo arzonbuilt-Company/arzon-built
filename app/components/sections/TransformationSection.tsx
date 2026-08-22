@@ -75,7 +75,7 @@ export function TransformationSection() {
   const { lang } = useT()
 
   return (
-    <section id="transformation" className="relative py-20 sm:py-32 px-4 sm:px-6 bg-transparent overflow-hidden">
+    <section id="transformation" className="relative scroll-mt-24 py-20 sm:py-32 px-4 sm:px-6 bg-transparent overflow-hidden">
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Cabecera del Proceso */}
         <motion.div

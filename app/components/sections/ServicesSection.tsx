@@ -68,7 +68,7 @@ export function ServicesSection() {
   }
 
   return (
-    <section id="services" className="relative py-20 sm:py-32 px-4 sm:px-6 overflow-hidden bg-transparent"
+    <section id="services" className="relative scroll-mt-24 py-20 sm:py-32 px-4 sm:px-6 overflow-hidden bg-transparent"
     >
 
       {/* Decorative Gold flare */}

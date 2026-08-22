@@ -134,7 +134,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="relative py-20 sm:py-32 px-4 sm:px-6 overflow-hidden bg-transparent"
+    <section id="contact" className="relative scroll-mt-24 py-20 sm:py-32 px-4 sm:px-6 overflow-hidden bg-transparent"
     >
 
       {/* Decorative Gold flare */}

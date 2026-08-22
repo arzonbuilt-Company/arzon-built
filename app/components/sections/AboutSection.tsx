@@ -93,7 +93,7 @@ export function AboutSection() {
   ]
 
   return (
-    <section id="about" className="relative py-20 sm:py-32 overflow-hidden bg-transparent"
+    <section id="about" className="relative scroll-mt-24 py-20 sm:py-32 overflow-hidden bg-transparent"
     >
 
       {/* Decorative background glow */}
