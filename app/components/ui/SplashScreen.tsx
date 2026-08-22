@@ -31,15 +31,15 @@ export function SplashScreen() {
     const iv = setInterval(() => {
       setProgress(p => {
         if (p >= 100) { clearInterval(iv); return 100 }
-        return Math.min(p + (p < 70 ? 2 : p < 90 ? 3 : 1), 100)
+        return Math.min(p + 14, 100)
       })
-    }, 25)
+    }, 20)
     return () => clearInterval(iv)
   }, [])
 
   useEffect(() => {
     if (progress >= 100) {
-      const t = setTimeout(() => setVisible(false), 500)
+      const t = setTimeout(() => setVisible(false), 120)
       return () => clearTimeout(t)
     }
   }, [progress])
@@ -50,7 +50,7 @@ export function SplashScreen() {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 0.98 }}
-          transition={{ duration: 0.9, ease: [0.76, 0, 0.24, 1] }}
+          transition={{ duration: 0.35, ease: [0.76, 0, 0.24, 1] }}
           className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-bg overflow-hidden"
         >
           {/* bg glow */}
@@ -81,7 +81,7 @@ export function SplashScreen() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15, duration: 0.6 }}
+            transition={{ delay: 0.03, duration: 0.2 }}
             className="text-center"
           >
             <Image src="/Logo.png" alt="Arzon Built" width={130} height={40} priority
