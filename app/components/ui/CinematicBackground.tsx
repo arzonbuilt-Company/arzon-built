@@ -38,8 +38,8 @@ export function CinematicBackground() {
         muted
         playsInline
         poster="/assets/hero-bg-poster.jpg"
-        // @ts-expect-error — fetchpriority isn't in React's video attribute types yet
-        fetchpriority="high"
+        // @ts-expect-error — fetchPriority isn't in React's video attribute types yet
+        fetchPriority="high"
         className="w-full h-full object-cover opacity-80"
       >
         <source src="/assets/secuencia_1.mp4" type="video/mp4" />
