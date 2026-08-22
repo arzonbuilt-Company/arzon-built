@@ -404,9 +404,9 @@ export function ContactSection() {
 
                     {/* Calculator Step 1: Choose Services (Interactive Cards) */}
                     <div>
-                      <h4 className="text-white text-xs font-bold uppercase tracking-wider mb-4">
+                      <h3 className="text-white text-xs font-bold uppercase tracking-wider mb-4">
                         {lang === 'en' ? 'Step 1: Select services' : 'Paso 1: Seleccione servicios'}
-                      </h4>
+                      </h3>
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                         {serviceOptions.map(opt => {
                           const isSelected = calcServices.includes(opt.id)
@@ -439,9 +439,9 @@ export function ContactSection() {
                     {/* Calculator Step 2: Slider for Size */}
                     <div>
                       <div className="flex justify-between items-baseline mb-3">
-                        <h4 className="text-white text-xs font-bold uppercase tracking-wider">
+                        <h3 className="text-white text-xs font-bold uppercase tracking-wider">
                           {lang === 'en' ? 'Step 2: Home Area (sq ft)' : 'Paso 2: Área de la casa (pies cuadrados)'}
-                        </h4>
+                        </h3>
                         <span className="text-lime-DEFAULT font-mono text-lg font-bold">{houseSize.toLocaleString()} sq ft</span>
                       </div>
                       <input
@@ -462,9 +462,9 @@ export function ContactSection() {
 
                     {/* Calculator Step 3: Material Quality Tier */}
                     <div>
-                      <h4 className="text-white text-xs font-bold uppercase tracking-wider mb-4">
+                      <h3 className="text-white text-xs font-bold uppercase tracking-wider mb-4">
                         {lang === 'en' ? 'Step 3: Quality Tier' : 'Paso 3: Nivel de Calidad'}
-                      </h4>
+                      </h3>
                       <div className="grid grid-cols-3 gap-3">
                         {(
                           [

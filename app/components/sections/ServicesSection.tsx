@@ -159,13 +159,19 @@ export function ServicesSection() {
               <button
                 key={i}
                 onClick={() => scrollToSlide(i)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  activeIdx === i
-                    ? 'w-6 bg-lime-DEFAULT'
-                    : 'w-1.5 bg-white/20'
-                }`}
+                className="relative h-1.5 flex items-center justify-center"
                 aria-label={`Go to slide ${i + 1}`}
-              />
+              >
+                {/* Invisible expanded hit area — keeps the visual dot small without shrinking the tap target */}
+                <span className="absolute -inset-2.5" aria-hidden />
+                <span
+                  className={`h-1.5 rounded-full transition-all duration-300 block ${
+                    activeIdx === i
+                      ? 'w-6 bg-lime-DEFAULT'
+                      : 'w-1.5 bg-white/20'
+                  }`}
+                />
+              </button>
             ))}
           </div>
 

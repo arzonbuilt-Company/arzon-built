@@ -44,7 +44,7 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h5 className="text-xs font-semibold tracking-[.25em] uppercase text-white/30 mb-6 font-sans">{t('footer.servicesHeader')}</h5>
+            <h3 className="text-xs font-semibold tracking-[.25em] uppercase text-white/30 mb-6 font-sans">{t('footer.servicesHeader')}</h3>
             <ul className="space-y-3">
               {services.map(s => (
                 <li key={s}>
@@ -58,7 +58,7 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h5 className="text-xs font-semibold tracking-[.25em] uppercase text-white/30 mb-6 font-sans">{t('footer.contactHeader')}</h5>
+            <h3 className="text-xs font-semibold tracking-[.25em] uppercase text-white/30 mb-6 font-sans">{t('footer.contactHeader')}</h3>
             <ul className="space-y-4 text-sm font-sans text-white/50">
               <li className="flex items-start gap-2.5">
                 <span className="text-lime-DEFAULT font-bold">📍</span>
