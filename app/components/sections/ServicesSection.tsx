@@ -21,6 +21,7 @@ export function ServicesSection() {
   const { t, lang } = useT()
   const [activeIdx, setActiveIdx] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
+  const scrollRaf = useRef<number | null>(null)
 
   const services = [
     { num: '01', title: t('services.s1.title'),       desc: t('services.s1.desc')      },
@@ -33,19 +34,25 @@ export function ServicesSection() {
   ]
 
   const handleScroll = () => {
-    if (containerRef.current) {
-      const container = containerRef.current
-      const scrollLeft = container.scrollLeft
-      const scrollWidth = container.scrollWidth
-      
-      // Calculate active index based on scroll position
-      const slideWidth = scrollWidth / services.length
-      const index = Math.round(scrollLeft / slideWidth)
-      
-      if (index >= 0 && index < services.length && activeIdx !== index) {
-        setActiveIdx(index)
+    // Reading scrollLeft/scrollWidth on every single scroll event can force
+    // a layout reflow mid-scroll — batch it to once per animation frame.
+    if (scrollRaf.current !== null) return
+    scrollRaf.current = requestAnimationFrame(() => {
+      scrollRaf.current = null
+      if (containerRef.current) {
+        const container = containerRef.current
+        const scrollLeft = container.scrollLeft
+        const scrollWidth = container.scrollWidth
+
+        // Calculate active index based on scroll position
+        const slideWidth = scrollWidth / services.length
+        const index = Math.round(scrollLeft / slideWidth)
+
+        if (index >= 0 && index < services.length && activeIdx !== index) {
+          setActiveIdx(index)
+        }
       }
-    }
+    })
   }
 
   const scrollToSlide = (idx: number) => {
