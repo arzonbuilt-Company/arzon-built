@@ -71,7 +71,7 @@ export function TransformationSection() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '0px 0px 120px 0px' }}
           transition={{ duration: 0.7 }}
           className="mb-16 sm:mb-24 text-center max-w-2xl mx-auto"
         >
@@ -104,7 +104,7 @@ export function TransformationSection() {
                 key={p.phase}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
+                viewport={{ once: true, margin: '0px 0px 80px 0px' }}
                 transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
                 whileHover={{ scale: 1.01 }}
                 className={`glass border ${style.border} ${style.bg} p-8 sm:p-12 rounded-2xl shadow-2xl relative overflow-hidden group hover:border-white/20 transition-colors duration-300 cursor-none`}

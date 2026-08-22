@@ -87,7 +87,7 @@ export function ServicesSection() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '0px 0px 120px 0px' }}
           transition={{ duration: 0.7 }}
           className="mb-12 sm:mb-24 text-center mx-auto max-w-2xl"
         >
@@ -270,7 +270,7 @@ export function ServicesSection() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '0px 0px 120px 0px' }}
               transition={{ delay: 0.3, duration: 0.6 }}
               className="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-6"
             >

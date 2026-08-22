@@ -151,7 +151,7 @@ export function ContactSection() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '0px 0px 120px 0px' }}
           transition={{ duration: 0.7 }}
           className="text-center mx-auto max-w-2xl mb-12 sm:mb-16"
         >

@@ -124,7 +124,7 @@ export function AboutSection() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '0px 0px 120px 0px' }}
           transition={{ duration: 0.7 }}
           className="text-center mb-12"
         >
@@ -138,7 +138,7 @@ export function AboutSection() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '0px 0px 120px 0px' }}
           transition={{ delay: 0.15, duration: 0.7 }}
           className="text-white/60 text-base md:text-lg leading-relaxed text-center mx-auto max-w-2xl mb-16 font-sans"
         >
@@ -149,7 +149,7 @@ export function AboutSection() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '0px 0px 120px 0px' }}
           transition={{ delay: 0.25, duration: 0.8 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 rounded-2xl overflow-hidden glass-lime mb-20 shadow-2xl"
         >
@@ -164,7 +164,7 @@ export function AboutSection() {
           variants={trustContainer}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.25 }}
+          viewport={{ once: true, amount: 0.25, margin: '0px 0px 120px 0px' }}
         >
           {trusts.map((text) => (
             <motion.div
@@ -183,7 +183,7 @@ export function AboutSection() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '0px 0px 120px 0px' }}
             className="text-center mb-16"
           >
             <span className="section-eyebrow mb-4 justify-center">
@@ -202,7 +202,7 @@ export function AboutSection() {
                 key={step.num}
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '0px 0px 120px 0px' }}
                 transition={{ delay: idx * 0.1, duration: 0.6 }}
                 whileHover={{ y: -4, scale: 1.02 }}
                 className="glass p-6 rounded-2xl border border-white/5 relative group hover:border-lime-DEFAULT/20 transition-all duration-300 cursor-none"
@@ -224,7 +224,7 @@ export function AboutSection() {
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '0px 0px 120px 0px' }}
           transition={{ delay: 0.3 }}
           className="text-center"
         >

@@ -71,7 +71,7 @@ export function PortfolioSection() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '0px 0px 120px 0px' }}
           transition={{ duration: 0.7 }}
           className="mb-16 sm:mb-24 text-center mx-auto max-w-2xl"
         >
@@ -162,7 +162,7 @@ export function PortfolioSection() {
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '0px 0px 120px 0px' }}
           transition={{ delay: 0.4 }}
           className="text-center mt-16 text-white/35 text-xs font-sans tracking-wider"
         >

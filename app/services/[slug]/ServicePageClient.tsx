@@ -404,7 +404,7 @@ export function ServicePageClient({ service: s }: { service: ServiceData }) {
             <motion.div 
               initial="hidden" 
               whileInView="show" 
-              viewport={{ once: true }} 
+              viewport={{ once: true, margin: '0px 0px 120px 0px' }} 
               variants={fade}
               transition={{ duration: 0.7 }} 
               className="text-center mb-16"
@@ -429,7 +429,7 @@ export function ServicePageClient({ service: s }: { service: ServiceData }) {
                   key={mat.id}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: '0px 0px 120px 0px' }}
                   transition={{ duration: 0.6, delay: idx * 0.15 }}
                   className="group relative flex flex-col rounded-2xl border border-white/5 bg-black/45 overflow-hidden shadow-2xl hover:border-lime-DEFAULT/25 hover:scale-[1.02] transition-all duration-500 cursor-none"
                   data-cursor-text={mat.cursor[lang] || mat.cursor.en}
@@ -471,7 +471,7 @@ export function ServicePageClient({ service: s }: { service: ServiceData }) {
         <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 items-start">
 
           {/* Left — body copy */}
-          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fade}
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: '0px 0px 120px 0px' }} variants={fade}
             transition={{ duration: 0.7 }}>
             <p className="section-eyebrow mb-5">
               <span className="section-rule" />
@@ -484,7 +484,7 @@ export function ServicePageClient({ service: s }: { service: ServiceData }) {
           </motion.div>
 
           {/* Right — features */}
-          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: '0px 0px 120px 0px' }} variants={stagger}
             transition={{ delayChildren: 0.2 }} className="space-y-3 pt-2">
             <p className="text-[10px] font-sans text-white/30 tracking-[.35em] uppercase mb-4">
               {lang === 'es' ? 'Lo que incluye' : "What's included"}
@@ -509,7 +509,7 @@ export function ServicePageClient({ service: s }: { service: ServiceData }) {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '0px 0px 120px 0px' }}
             transition={{ duration: 0.7 }}
             className="text-center mb-16 max-w-2xl mx-auto"
           >
@@ -532,7 +532,7 @@ export function ServicePageClient({ service: s }: { service: ServiceData }) {
                 key={idx}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '0px 0px 120px 0px' }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
                 className="group relative aspect-[3/4] overflow-hidden rounded-2xl border border-white/5 bg-bg shadow-2xl cursor-none"
                 data-cursor-text={lang === 'es' ? 'GALERÍA' : 'GALLERY'}
@@ -568,7 +568,7 @@ export function ServicePageClient({ service: s }: { service: ServiceData }) {
       <section className="relative py-24 px-6 bg-transparent overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-lime-DEFAULT/10 to-transparent" />
         <div className="max-w-4xl mx-auto">
-          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fade}
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: '0px 0px 120px 0px' }} variants={fade}
             transition={{ duration: 0.7 }} className="text-center mb-16">
             <p className="section-eyebrow mb-4 justify-center">
               <span className="section-rule" />
@@ -587,7 +587,7 @@ export function ServicePageClient({ service: s }: { service: ServiceData }) {
               {process.map((p, i) => (
                 <motion.div key={p.step}
                   initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.6 }}
+                  viewport={{ once: true, margin: '0px 0px 120px 0px' }} transition={{ delay: i * 0.1, duration: 0.6 }}
                   className="flex gap-6 items-start">
                   {/* Step number circle */}
                   <div className="shrink-0 w-11 h-11 rounded-full glass-lime flex items-center justify-center z-10">
@@ -613,7 +613,7 @@ export function ServicePageClient({ service: s }: { service: ServiceData }) {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '0px 0px 120px 0px' }}
             transition={{ duration: 0.7 }}
             className="text-center mb-16"
           >
@@ -666,7 +666,7 @@ export function ServicePageClient({ service: s }: { service: ServiceData }) {
                 key={pillar.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '0px 0px 120px 0px' }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
                 className="glass p-8 rounded-2xl border border-white/5 hover:border-lime-DEFAULT/20 transition-all duration-300 shadow-xl flex flex-col justify-between"
               >
@@ -686,7 +686,7 @@ export function ServicePageClient({ service: s }: { service: ServiceData }) {
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] pointer-events-none"
           style={{ background: 'radial-gradient(ellipse, rgba(185,190,138,0.14) 0%, transparent 70%)' }} />
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.7 }} className="relative z-10">
+          viewport={{ once: true, margin: '0px 0px 120px 0px' }} transition={{ duration: 0.7 }} className="relative z-10">
           <p className="section-eyebrow justify-center mb-6">
             <span className="section-rule" />
             {lang === 'es' ? 'Sin compromiso' : 'No commitment'}

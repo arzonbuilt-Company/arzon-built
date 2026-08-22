@@ -10,6 +10,15 @@ export function SplashScreen() {
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
+    // Browsers try to restore the previous scroll position on refresh —
+    // force every load (including a refresh) to start at the top instead.
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual'
+    }
+    window.scrollTo(0, 0)
+  }, [])
+
+  useEffect(() => {
     // Intentionally does NOT set body{overflow:hidden}: on a congested main
     // thread even a "safety" JS timer can be starved for a long time, and a
     // scroll block that depends on JS to lift it can then get stuck for
