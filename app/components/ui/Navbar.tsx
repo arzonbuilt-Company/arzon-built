@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { motion, useScroll } from 'framer-motion'
+import { m as motion, useScroll } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useT } from '../../lib/i18n'

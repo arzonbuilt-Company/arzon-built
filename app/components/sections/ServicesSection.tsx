@@ -1,7 +1,7 @@
 'use client'
 import { useState, useRef } from 'react'
 import Link from 'next/link'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m as motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { useT } from '../../lib/i18n'
 

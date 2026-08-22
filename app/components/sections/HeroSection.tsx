@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import { useCountUp } from '../../hooks/useCountUp'
 import { MagneticButton } from '../ui/MagneticButton'
 import { TextReveal } from '../ui/TextReveal'

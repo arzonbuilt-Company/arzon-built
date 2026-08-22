@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import { Navbar }         from '../../components/ui/Navbar'
 import { CinematicBackground } from '../../components/ui/CinematicBackground'
 import { TextReveal }     from '../../components/ui/TextReveal'
