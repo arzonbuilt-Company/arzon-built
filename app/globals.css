@@ -52,6 +52,21 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes reveal-up {
+  from { transform: translateY(105%); }
+  to   { transform: translateY(0); }
+}
+.reveal-word {
+  display: inline-block;
+  transform: translateY(105%);
+  animation: reveal-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.animate-fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
 /* ── Custom cursor ─────────────────────────────────────────────── */
 #cursor-dot {
   position: fixed; width: 8px; height: 8px;

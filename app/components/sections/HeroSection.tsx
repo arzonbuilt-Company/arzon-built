@@ -1,7 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
-import { motion } from 'framer-motion'
 import { useCountUp } from '../../hooks/useCountUp'
 import { MagneticButton } from '../ui/MagneticButton'
 import { TextReveal } from '../ui/TextReveal'
@@ -48,7 +47,6 @@ export function HeroSection() {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16 bg-transparent"
     >
-
       {/* Three.js particles bg — desktop only, skipped on mobile/touch for performance */}
       {showParticles && (
         <div className="absolute inset-0 z-0 opacity-40">
@@ -65,17 +63,14 @@ export function HeroSection() {
       />
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 w-full py-16 text-center">
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="section-eyebrow mb-6 justify-center"
+        <p
+          className="section-eyebrow mb-6 justify-center animate-fade-up"
+          style={{ animationDelay: '0s' }}
         >
           <span className="section-rule" />
           {t('hero.eyebrow')}
           <span className="section-rule" />
-        </motion.p>
+        </p>
 
         <h1
           key={lang}
@@ -87,20 +82,16 @@ export function HeroSection() {
           <TextReveal text={t('hero.title3')} as="span" className="block text-lime-gradient font-medium italic mt-2" delay={0.5} />
         </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.9 }}
-          className="text-white/60 text-base md:text-lg max-w-2xl mx-auto leading-relaxed mb-10 font-sans"
+        <p
+          className="text-white/60 text-base md:text-lg max-w-2xl mx-auto leading-relaxed mb-10 font-sans animate-fade-up"
+          style={{ animationDelay: '0.8s' }}
         >
           {t('hero.subtitle')}
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.1 }}
-          className="flex flex-col sm:flex-row gap-4 mb-16 justify-center"
+        <div
+          className="flex flex-col sm:flex-row gap-4 mb-16 justify-center animate-fade-up"
+          style={{ animationDelay: '1.0s' }}
         >
           <MagneticButton href="#contact" className="btn-lime text-center rounded-xl font-bold shadow-lg">
             {t('hero.cta1')}
@@ -108,33 +99,29 @@ export function HeroSection() {
           <MagneticButton href="#transformation" className="btn-outline text-center rounded-xl font-bold" strength={0.2}>
             {t('hero.cta2')}
           </MagneticButton>
-        </motion.div>
+        </div>
 
         {/* Stats — centered grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.3 }}
-          className="grid grid-cols-3 gap-4 sm:gap-6 max-w-3xl mx-auto"
+        <div
+          className="grid grid-cols-3 gap-4 sm:gap-6 max-w-3xl mx-auto animate-fade-up"
+          style={{ animationDelay: '1.2s' }}
         >
           {stats.map((s) => (
             <StatCard key={s.label} {...s} />
           ))}
-        </motion.div>
+        </div>
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }} animate={{ opacity: 0.7 }} transition={{ delay: 2.0 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+      <div
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-fade-up"
+        style={{ animationDelay: '1.8s', opacity: 0.7 }}
       >
         <span className="text-[9px] font-sans tracking-[.4em] uppercase text-white/40">{t('hero.scroll')}</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-px h-8 bg-gradient-to-b from-lime-DEFAULT/80 to-transparent"
+        <div
+          className="w-px h-8 bg-gradient-to-b from-lime-DEFAULT/80 to-transparent animate-float"
         />
-      </motion.div>
+      </div>
     </section>
   )
 }
