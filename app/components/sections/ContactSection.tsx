@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { m as motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useT } from '../../lib/i18n'
 
 export function ContactSection() {

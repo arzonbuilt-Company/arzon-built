@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { m as motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import type { WidgetType } from '../../lib/services-data'
 import { useT } from '../../lib/i18n'
 

@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { m as motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useT } from '../../lib/i18n'
 import { useCountUp } from '../../hooks/useCountUp'
 

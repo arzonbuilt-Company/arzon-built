@@ -4,7 +4,6 @@ import { CustomCursor } from "./components/ui/CustomCursor";
 import { SplashScreen } from "./components/ui/SplashScreen";
 import { ContactFloat } from "./components/ui/ContactFloat";
 import { SmoothScrollProvider } from "./components/providers/SmoothScrollProvider";
-import { MotionProvider } from "./components/providers/MotionProvider";
 import { LanguageProvider } from "./lib/i18n";
 
 export const metadata: Metadata = {
@@ -18,12 +17,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="bg-bg text-white antialiased">
         <LanguageProvider>
-          <MotionProvider>
-            <SplashScreen />
-            <CustomCursor />
-            <ContactFloat />
-            <SmoothScrollProvider>{children}</SmoothScrollProvider>
-          </MotionProvider>
+          <SplashScreen />
+          <CustomCursor />
+          <ContactFloat />
+          <SmoothScrollProvider>{children}</SmoothScrollProvider>
         </LanguageProvider>
       </body>
     </html>
