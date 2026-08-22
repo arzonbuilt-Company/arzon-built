@@ -24,8 +24,8 @@ const config: Config = {
         subtle:  "#9ca3af",
       },
       fontFamily: {
-        display: ["Outfit", "system-ui", "sans-serif"],
-        sans:    ["Inter", "system-ui", "sans-serif"],
+        display: ["var(--font-outfit)", "system-ui", "sans-serif"],
+        sans:    ["var(--font-inter)", "system-ui", "sans-serif"],
       },
       animation: {
         "float":      "float 6s ease-in-out infinite",
