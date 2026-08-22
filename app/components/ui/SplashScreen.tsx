@@ -8,6 +8,7 @@ export function SplashScreen() {
   const { t } = useT()
   const [visible, setVisible]   = useState(true)
   const [progress, setProgress] = useState(0)
+  const [ready, setReady]       = useState(false)
 
   useEffect(() => {
     // Browsers try to restore the previous scroll position on refresh — force
@@ -23,26 +24,54 @@ export function SplashScreen() {
   }, [])
 
   useEffect(() => {
-    // Intentionally does NOT set body{overflow:hidden}: on a congested main
-    // thread even a "safety" JS timer can be starved for a long time, and a
-    // scroll block that depends on JS to lift it can then get stuck for
-    // real. The splash is a fixed full-screen overlay regardless, so it
-    // still covers everything the same way without needing to touch scroll.
+    // Keep the splash up until the page is ACTUALLY ready (window 'load' —
+    // fonts, hero video, above-the-fold images) instead of a fixed timer.
+    // That way the Hero is already sitting there fully formed the moment
+    // the splash lifts, instead of finishing fast and revealing a Hero
+    // that's still visibly assembling itself.
+    let minTimeElapsed = false
+    let pageLoaded = false
+
+    const tryFinish = () => {
+      if (minTimeElapsed && pageLoaded) setReady(true)
+    }
+
+    // Small minimum so the brand mark doesn't just flash on a fast load.
+    const minTimer = setTimeout(() => { minTimeElapsed = true; tryFinish() }, 500)
+
+    const onLoad = () => { pageLoaded = true; tryFinish() }
+    if (document.readyState === 'complete') {
+      onLoad()
+    } else {
+      window.addEventListener('load', onLoad)
+    }
+
+    // Hard safety cap: never hold the splash (and hide the page) for more
+    // than this, no matter how slow the connection/device is.
+    const maxTimer = setTimeout(() => setReady(true), 4000)
+
+    return () => {
+      clearTimeout(minTimer)
+      clearTimeout(maxTimer)
+      window.removeEventListener('load', onLoad)
+    }
+  }, [])
+
+  useEffect(() => {
+    // Fake progress just for visual feedback — caps below 100 until the
+    // real readiness signal above says it's actually safe to finish.
     const iv = setInterval(() => {
-      setProgress(p => {
-        if (p >= 100) { clearInterval(iv); return 100 }
-        return Math.min(p + 14, 100)
-      })
-    }, 20)
+      setProgress(p => (p >= 92 ? 92 : Math.min(p + 4, 92)))
+    }, 60)
     return () => clearInterval(iv)
   }, [])
 
   useEffect(() => {
-    if (progress >= 100) {
-      const t = setTimeout(() => setVisible(false), 120)
-      return () => clearTimeout(t)
-    }
-  }, [progress])
+    if (!ready) return
+    setProgress(100)
+    const t = setTimeout(() => setVisible(false), 150)
+    return () => clearTimeout(t)
+  }, [ready])
 
   return (
     <AnimatePresence>
@@ -50,7 +79,7 @@ export function SplashScreen() {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 0.98 }}
-          transition={{ duration: 0.35, ease: [0.76, 0, 0.24, 1] }}
+          transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
           className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-bg overflow-hidden"
         >
           {/* bg glow */}
@@ -81,7 +110,7 @@ export function SplashScreen() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.03, duration: 0.2 }}
+            transition={{ delay: 0.1, duration: 0.4 }}
             className="text-center"
           >
             <Image src="/Logo.png" alt="Arzon Built" width={130} height={40} priority
@@ -98,7 +127,7 @@ export function SplashScreen() {
             </div>
             <div className="h-px bg-white/10 overflow-hidden">
               <div
-                className="h-full bg-lime-DEFAULT transition-all duration-75"
+                className="h-full bg-lime-DEFAULT transition-all duration-150"
                 style={{ width: `${progress}%` }}
               />
             </div>
