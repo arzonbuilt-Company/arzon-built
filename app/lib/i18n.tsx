@@ -150,8 +150,8 @@ const dict = {
     // Hero
     'hero.eyebrow':   'Lawrenceville, GA',
     'hero.title1':    'Transformamos',
-    'hero.title2':    'Casas en Hogares',
-    'hero.title3':    'de Ensueño.',
+    'hero.title2':    'Casas en',
+    'hero.title3':    'Dream Homes.',
     'hero.subtitle':  'Remodelaciones premium en Lawrenceville, GA — techos, fachadas, pintura, ventanas y remodelaciones completas.',
     'hero.cta1':      'Cotización Gratis',
     'hero.cta2':      'Ver Nuestro Trabajo ↓',
