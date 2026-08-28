@@ -74,12 +74,12 @@ export function HeroSection() {
 
         <h1
           key={lang}
-          className="font-display font-black leading-[0.9] tracking-tight mb-8"
-          style={{ fontSize: 'clamp(2.75rem, 8.5vw, 6.25rem)' }}
+          className="font-display-serif font-black leading-[0.95] mb-8"
+          style={{ fontSize: 'clamp(3rem, 8.5vw, 6.5rem)' }}
         >
-          <TextReveal text={t('hero.title1')} as="span" className="block text-white" delay={0.1} />
-          <TextReveal text={t('hero.title2')} as="span" className="block text-white" delay={0.3} />
-          <TextReveal text={t('hero.title3')} as="span" className="block text-lime-gradient font-medium italic mt-2" delay={0.5} />
+          <TextReveal text={t('hero.title1')} as="span" className="block text-white" delay={0.15} />
+          <TextReveal text={t('hero.title2')} as="span" className="block text-white" delay={0.45} />
+          <TextReveal text={t('hero.title3')} as="span" className="block text-lime-gradient italic" delay={0.75} />
         </h1>
 
         <p

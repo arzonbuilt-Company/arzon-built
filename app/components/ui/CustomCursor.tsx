@@ -1,9 +1,10 @@
 'use client'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export function CustomCursor() {
   const dotRef  = useRef<HTMLDivElement>(null)
   const ringRef = useRef<HTMLDivElement>(null)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     const dot  = dotRef.current
@@ -11,7 +12,10 @@ export function CustomCursor() {
     if (!dot || !ring) return
 
     const isTouch = window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window
-    if (isTouch) return
+    if (isTouch) {
+      setIsMobile(true)
+      return
+    }
 
     let mx = 0, my = 0, rx = 0, ry = 0, rafId: number
 
@@ -66,6 +70,8 @@ export function CustomCursor() {
       observer.disconnect()
     }
   }, [])
+
+  if (isMobile) return null
 
   return (
     <>

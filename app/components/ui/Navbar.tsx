@@ -28,7 +28,9 @@ export function Navbar() {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none animate-slide-down"
+      className={`fixed top-0 left-0 right-0 z-50 flex justify-center animate-slide-down ${
+        menuOpen ? 'pointer-events-auto' : 'pointer-events-none'
+      }`}
       style={{ animationDelay: '0.1s' }}
     >
       <div 

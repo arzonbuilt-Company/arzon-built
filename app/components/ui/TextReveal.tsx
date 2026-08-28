@@ -1,5 +1,6 @@
 'use client'
 
+import { motion } from 'framer-motion'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 
 interface TextRevealProps {
@@ -31,14 +32,18 @@ export function TextReveal({
       className="inline-block overflow-hidden align-bottom"
       style={{ marginRight: '0.25em' }}
     >
-      <span
-        className="inline-block reveal-word"
-        style={{
-          animationDelay: `${delay + i * stagger}s`,
+      <motion.span
+        className="inline-block"
+        initial={{ y: '105%' }}
+        animate={{ y: '0%' }}
+        transition={{
+          duration: 0.7,
+          ease: [0.22, 1, 0.36, 1],
+          delay: delay + i * stagger,
         }}
       >
         {word}
-      </span>
+      </motion.span>
     </span>
   ))
 

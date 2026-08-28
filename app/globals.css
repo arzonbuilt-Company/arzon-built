@@ -277,9 +277,13 @@ body.cursor-hover-text #cursor-ring {
 }
 
 /* ── Mobile / touch ────────────────────────────────────────────── */
-@media (hover: none) and (pointer: coarse) {
-  body { cursor: auto; }
-  #cursor-dot, #cursor-ring { display: none; }
+@media (max-width: 1024px) {
+  body, a, button, select, input, [role="button"], .cursor-none, [data-cursor-text] {
+    cursor: auto !important;
+  }
+  #cursor-dot, #cursor-ring {
+    display: none !important;
+  }
 }
 
 /* iOS safe-area */
