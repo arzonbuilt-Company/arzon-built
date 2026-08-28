@@ -42,7 +42,8 @@ export function CinematicBackground() {
         fetchPriority="high"
         className="w-full h-full object-cover opacity-80"
       >
-        <source src="/assets/secuencia_1.mp4" type="video/mp4" />
+        <source src="/assets/secuencia_desktop.mp4" type="video/mp4" media="(min-width: 768px)" />
+        <source src="/assets/secuencia_mobile.mp4" type="video/mp4" />
       </video>
       {/* Dark brand overlay for high text legibility */}
       <div className="absolute inset-0 bg-gradient-to-b from-bg/65 via-bg/20 to-bg/65 pointer-events-none" />
